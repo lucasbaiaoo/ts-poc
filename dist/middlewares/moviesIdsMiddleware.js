@@ -34,25 +34,35 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { moviesRepository } from "../repositories/moviesRepository.js";
-export function getMoviesController(req, res) {
+import { moviesIdsRepository } from "../repositories/moviesRepository.js";
+export function moviesIdsMiddleware(req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
-        var movies, error_1;
+        var id, moviesIds, arrayMoviesIds, i, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, moviesRepository()];
+                    id = parseInt(req.params.id);
+                    _a.label = 1;
                 case 1:
-                    movies = _a.sent();
-                    res.status(200).send(movies.rows);
-                    return [3 /*break*/, 3];
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, moviesIdsRepository()];
                 case 2:
+                    moviesIds = _a.sent();
+                    arrayMoviesIds = [];
+                    for (i = 0; i < moviesIds.rows.length; i++) {
+                        arrayMoviesIds.push(moviesIds.rows[i].id);
+                    }
+                    if (arrayMoviesIds.includes(id) === false) {
+                        res.status(404).send([]);
+                        return [2 /*return*/];
+                    }
+                    return [3 /*break*/, 4];
+                case 3:
                     error_1 = _a.sent();
                     console.log(error_1);
                     res.sendStatus(500);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     });

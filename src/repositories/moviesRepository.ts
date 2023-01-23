@@ -11,3 +11,11 @@ export function moviesConflictVerificationRepository(){
 export function moviesRepository(){
     return connectionDB.query("SELECT * FROM movies;")
 }
+
+export function moviesIdsRepository(){
+    return connectionDB.query("SELECT id FROM movies;")
+}
+
+export function movieByIdRepository(id){
+    return connectionDB.query("SELECT * FROM movies WHERE id = $1;", [id])
+}

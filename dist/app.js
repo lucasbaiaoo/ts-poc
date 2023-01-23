@@ -1,11 +1,13 @@
 import express from "express";
 import cors from "cors";
 import postMoviesRoute from "./routes/postMoviesRoute.js";
-import getMoviesRoute from "./routes/postMoviesRoute.js";
+import getMoviesRoute from "./routes/getMoviesRoute.js";
+import getMoviesByIdRoute from "./routes/getMoviesByIdRoute.js";
 var server = express();
 server.use(cors());
 server.use(express.json());
 server.use(postMoviesRoute);
 server.use(getMoviesRoute);
+server.use(getMoviesByIdRoute);
 var port = process.env.PORT || 4000;
 server.listen(port, function () { return console.log("Server running in port: ".concat(port)); });
