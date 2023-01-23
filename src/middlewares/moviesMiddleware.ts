@@ -1,6 +1,7 @@
 import { moviesSchema } from "../models/moviesSchema.js";
 import { Request, Response, NextFunction } from "express";
 import { moviesConflictVerificationRepository } from "../repositories/moviesRepository.js";
+import Joi from "joi";
 
 export async function movieMiddleware(req: Request, res: Response, next: NextFunction): Promise<void>{
     const name: string = req.body.name;
@@ -21,7 +22,7 @@ export async function movieMiddleware(req: Request, res: Response, next: NextFun
         res.sendStatus(500);
     }
 
-    const validation = moviesSchema.validate(req.body, {abortEarly: false});
+    const validation: Joi.ValidationResult = moviesSchema.validate(req.body, {abortEarly: false});
 
     if(validation.error){
         const errors = validation.error.details.map((detail) => detail.message);

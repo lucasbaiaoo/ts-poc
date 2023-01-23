@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
+import { QueryResult } from "pg";
 import { getMoviesRepository } from "../repositories/moviesRepository.js";
 
 export async function getMoviesController(req: Request, res: Response): Promise<void>{
     try{
-        const movies = await getMoviesRepository();
+        const movies: QueryResult = await getMoviesRepository();
         
         res.status(200).send(movies.rows);
     } catch (error) {

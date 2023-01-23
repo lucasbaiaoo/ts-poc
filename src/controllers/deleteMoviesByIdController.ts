@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { deleteMovieByIdRepository } from "../repositories/moviesRepository.js";
 
-export async function deleteMoviesByIdController(req: Request, res: Response){
+export async function deleteMoviesByIdController(req: Request, res: Response): Promise<void>{
     const id: number = parseInt(req.params.id);
 
     try{
