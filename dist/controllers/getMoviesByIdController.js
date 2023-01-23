@@ -48,7 +48,6 @@ export function getMoviesByIdController(req, res) {
                     return [4 /*yield*/, getMovieByIdRepository(id)];
                 case 2:
                     movieById = _a.sent();
-                    console.log(movieById.rows);
                     res.status(200).send(movieById.rows);
                     return [3 /*break*/, 4];
                 case 3:

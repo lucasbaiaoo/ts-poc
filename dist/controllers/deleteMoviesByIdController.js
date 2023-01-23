@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { deleteMovieByIdRepository } from "../repositories/moviesRepository.js";
-export function updateMoviesByIdController(req, res) {
+export function deleteMoviesByIdController(req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var id, error_1;
         return __generator(this, function (_a) {
