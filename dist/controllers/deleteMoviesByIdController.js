@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { updateMovieByIdRepository } from "../repositories/moviesRepository.js";
+import { deleteMovieByIdRepository } from "../repositories/moviesRepository.js";
 export function updateMoviesByIdController(req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var id, error_1;
@@ -45,7 +45,7 @@ export function updateMoviesByIdController(req, res) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, updateMovieByIdRepository(id)];
+                    return [4 /*yield*/, deleteMovieByIdRepository(id)];
                 case 2:
                     _a.sent();
                     res.sendStatus(200);

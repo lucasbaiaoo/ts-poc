@@ -23,3 +23,7 @@ export function getMovieByIdRepository(id: number){
 export function updateMovieByIdRepository(id: number){
     return connectionDB.query("UPDATE movies SET already_watched = true WHERE id = $1;", [id])
 }
+
+export function deleteMovieByIdRepository(id: number){
+    return connectionDB.query("DELETE FROM movies WHERE id = $1;", [id])
+}

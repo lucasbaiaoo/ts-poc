@@ -6,7 +6,6 @@ export async function getMoviesByIdController(req: Request, res: Response){
     
     try{
         const movieById = await getMovieByIdRepository(id);
-        console.log(movieById.rows)
 
         res.status(200).send(movieById.rows)
     } catch (error) {
