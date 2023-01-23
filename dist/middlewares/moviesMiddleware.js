@@ -34,19 +34,45 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { moviesSchema } from "../models/moviesSchema";
+import { moviesSchema } from "../models/moviesSchema.js";
+import { moviesConflictVerificationRepository } from "../repositories/moviesRepository.js";
 export function movieMiddleware(req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
-        var validation, errors;
+        var name, streamingService, genre, movies, i, error_1, validation, errors;
         return __generator(this, function (_a) {
-            validation = moviesSchema.validate(req.body, { abortEarly: false });
-            if (validation.error) {
-                errors = validation.error.details.map(function (detail) { return detail.message; });
-                res.status(422).send(errors);
-                return [2 /*return*/];
+            switch (_a.label) {
+                case 0:
+                    name = req.body.name;
+                    streamingService = req.body.streamingService;
+                    genre = req.body.genre;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, moviesConflictVerificationRepository()];
+                case 2:
+                    movies = _a.sent();
+                    for (i = 0; i < movies.rows.length; i++) {
+                        if (movies.rows[i].name === name && movies.rows[i].streaming_service === streamingService && movies.rows[i].genre === genre) {
+                            res.sendStatus(409);
+                            return [2 /*return*/];
+                        }
+                    }
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_1 = _a.sent();
+                    console.log(error_1);
+                    res.sendStatus(500);
+                    return [3 /*break*/, 4];
+                case 4:
+                    validation = moviesSchema.validate(req.body, { abortEarly: false });
+                    if (validation.error) {
+                        errors = validation.error.details.map(function (detail) { return detail.message; });
+                        res.status(422).send(errors);
+                        return [2 /*return*/];
+                    }
+                    next();
+                    return [2 /*return*/];
             }
-            next();
-            return [2 /*return*/];
         });
     });
 }

@@ -34,30 +34,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { moviesInfoRepository } from "../repositories/moviesRepository.js";
-export function postMoviesController(req, res) {
+import { moviesRepository } from "../repositories/moviesRepository.js";
+export function getMoviesController(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var name, streamingService, genre, error_1;
+        var movies, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    name = req.body.name;
-                    streamingService = req.body.streamingService;
-                    genre = req.body.genre;
-                    _a.label = 1;
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, moviesRepository()];
                 case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, moviesInfoRepository(name, streamingService, genre)];
+                    movies = _a.sent();
+                    console.log(movies.rows);
+                    return [3 /*break*/, 3];
                 case 2:
-                    _a.sent();
-                    res.sendStatus(201);
-                    return [3 /*break*/, 4];
-                case 3:
                     error_1 = _a.sent();
                     console.log(error_1);
                     res.sendStatus(500);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     });

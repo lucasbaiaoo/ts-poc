@@ -7,3 +7,7 @@ export function moviesInfoRepository(name: string, streamingService: string, gen
 export function moviesConflictVerificationRepository(){
     return connectionDB.query("SELECT * FROM movies;")
 }
+
+export function moviesRepository(){
+    return connectionDB.query("SELECT * FROM movies;")
+}
