@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { moviesIdsRepository } from "../repositories/moviesRepository.js";
+import { getMoviesIdsRepository } from "../repositories/moviesRepository.js";
 export function moviesIdsMiddleware(req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
         var id, moviesIds, arrayMoviesIds, i, error_1;
@@ -45,7 +45,7 @@ export function moviesIdsMiddleware(req, res, next) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, moviesIdsRepository()];
+                    return [4 /*yield*/, getMoviesIdsRepository()];
                 case 2:
                     moviesIds = _a.sent();
                     arrayMoviesIds = [];
@@ -62,7 +62,9 @@ export function moviesIdsMiddleware(req, res, next) {
                     console.log(error_1);
                     res.sendStatus(500);
                     return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                case 4:
+                    next();
+                    return [2 /*return*/];
             }
         });
     });

@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { moviesInfoRepository } from "../repositories/moviesRepository.js";
+import { moviesInsertionRepository } from "../repositories/moviesRepository.js";
 export function postMoviesController(req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var name, streamingService, genre, error_1;
@@ -47,7 +47,7 @@ export function postMoviesController(req, res) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, moviesInfoRepository(name, streamingService, genre)];
+                    return [4 /*yield*/, moviesInsertionRepository(name, streamingService, genre)];
                 case 2:
                     _a.sent();
                     res.sendStatus(201);

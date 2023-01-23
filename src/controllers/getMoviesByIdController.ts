@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { movieByIdRepository } from "../repositories/moviesRepository.js";
+import { getMovieByIdRepository } from "../repositories/moviesRepository.js";
 
 export async function getMoviesByIdController(req: Request, res: Response){
     const id: number = parseInt(req.params.id);
     
     try{
-        const movieById = await movieByIdRepository(id);
+        const movieById = await getMovieByIdRepository(id);
         console.log(movieById.rows)
 
         res.status(200).send(movieById.rows)

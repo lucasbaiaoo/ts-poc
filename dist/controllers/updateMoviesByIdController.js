@@ -34,10 +34,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { getMovieByIdRepository } from "../repositories/moviesRepository.js";
-export function getMoviesByIdController(req, res) {
+import { updateMovieByIdRepository } from "../repositories/moviesRepository";
+export function updateMoviesByIdController(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var id, movieById, error_1;
+        var id, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -45,11 +45,10 @@ export function getMoviesByIdController(req, res) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, getMovieByIdRepository(id)];
+                    return [4 /*yield*/, updateMovieByIdRepository(id)];
                 case 2:
-                    movieById = _a.sent();
-                    console.log(movieById.rows);
-                    res.status(200).send(movieById.rows);
+                    _a.sent();
+                    res.sendStatus(204);
                     return [3 /*break*/, 4];
                 case 3:
                     error_1 = _a.sent();

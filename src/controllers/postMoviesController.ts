@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { moviesInfoRepository } from "../repositories/moviesRepository.js";
+import { moviesInsertionRepository } from "../repositories/moviesRepository.js";
 
 export async function postMoviesController(req: Request, res: Response): Promise<void>{
     const name: string = req.body.name;
@@ -7,7 +7,7 @@ export async function postMoviesController(req: Request, res: Response): Promise
     const genre: string = req.body.genre;
 
     try{
-        await moviesInfoRepository(name, streamingService, genre);
+        await moviesInsertionRepository(name, streamingService, genre);
         res.sendStatus(201);    
     } catch (error) {
         console.log(error);
